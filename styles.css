@@ -1059,7 +1059,7 @@
 
 .select-menu {
     position: absolute;
-    right: 0;
+    right: -21px;
     width: 178px;
     top: 67px;
     display: none;
@@ -1345,5 +1345,9 @@ canvas {
 
     .toolHome-item-right span {
         display: none;
+    }
+
+    .select-menu {
+        right: -65px;
     }
 }
