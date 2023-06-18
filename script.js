@@ -5,10 +5,8 @@ const tabNameFile = document.querySelector("#tabNameFile");
 const fileMenu = document.querySelector(".file-menu");
 subHeaderDown.addEventListener("click", function () {
   if (subHeaderMenuDown.style.display === "none") {
-    // Nếu box đang ẩn, hiển thị box
     subHeaderMenuDown.style.display = "block";
   } else {
-    // Nếu box đang hiển thị, ẩn box
     subHeaderMenuDown.style.display = "none";
   }
 });
@@ -26,6 +24,8 @@ const toolHome = document.querySelector(".toolHome-cantainer");
 const iconShowStatusBar = document.querySelector("#icon-show-status");
 
 const toolView = document.querySelector(".toolView");
+
+const board = document.querySelector(".board");
 
 const iconHideStatusBar = document.querySelector("#icon-hide-status");
 tabHome.addEventListener("click", function () {
@@ -51,6 +51,7 @@ iconShowStatusBar.addEventListener("click", function () {
   iconShowStatusBar.style.display = "none";
   tabView.classList.remove("active-tool");
   tabHome.classList.remove("active-tool");
+  board.classList.add("hideStatus");
 });
 iconHideStatusBar.addEventListener("click", function () {
   if (tabView.classList.contains("active-tab")) {
@@ -62,7 +63,7 @@ iconHideStatusBar.addEventListener("click", function () {
     toolHome.style.display = "flex";
     tabHome.classList.add("active-tool");
   }
-
+  board.classList.remove("hideStatus");
   iconHideStatusBar.style.display = "none";
   iconShowStatusBar.style.display = "block";
 });
