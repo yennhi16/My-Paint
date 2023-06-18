@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+    <link rel="icon"
+        href="https://th.bing.com/th/id/R.1141dffa301a2d198a52390c87028e2d?rik=7Ji6wXDM8LHBfw&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2f9TR%2fLG9%2f9TRLG96qc.png&ehk=uXDaSqutUXdtEq39ik%2bY2KAFJ71%2fnVjiaZwLkW0MA5I%3d&risl=&pid=ImgRaw&r=0"
+        type="image/x-icon">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <title>My Paint</title>
+</head>
+
+<body>
+    <div class="sub-header">
+        <div class="sub-header-item">
+            <img src="https://th.bing.com/th/id/R.1141dffa301a2d198a52390c87028e2d?rik=7Ji6wXDM8LHBfw&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2f9TR%2fLG9%2f9TRLG96qc.png&ehk=uXDaSqutUXdtEq39ik%2bY2KAFJ71%2fnVjiaZwLkW0MA5I%3d&risl=&pid=ImgRaw&r=0"
+                alt="logo">
+        </div>
+        <div id="saveCanvas" class="sub-header-item">
+            <iconify-icon icon="fa:save"></iconify-icon>
+        </div>
+        <div class="sub-header-item">
+            <iconify-icon icon="icon-park-solid:back" style="color: #1890ff;"></iconify-icon>
+
+        </div>
+        <div class="sub-header-item">
+            <iconify-icon icon="icon-park-solid:next" style="color: #a4a4a4;"></iconify-icon>
+        </div>
+        <div class="sub-header-item" id="sub-header-item-down">
+            <iconify-icon icon="fluent:caret-down-24-filled"></iconify-icon>
+
+
+        </div>
+        <div class="sub-header-item">
+            <span>
+                Untitled Paint
+            </span>
+        </div>
+        <div class="sub-header-down">
+            <h5>
+                Customize Qiuck Access Toolbar
+            </h5>
+            <div class="sub-header-down-select">
+                <div class="down-select-row">
+                    <input type="checkbox" id="new">
+                    <label for="new">New</label>
+                </div>
+                <div class="down-select-row">
+                    <input type="checkbox" id="open">
+                    <label for="open">Open</label>
+                </div>
+                <div class="down-select-row">
+                    <input type="checkbox" checked="checked" id="save">
+                    <label for="save">Save</label>
+                </div>
+                <div class="down-select-row">
+                    <input type="checkbox" id="print">
+                    <label for="print">Print</label>
+                </div>
+                <div class="down-select-row">
+                    <input type="checkbox" id="print-review">
+                    <label for="print-review">Print review</label>
+                </div>
+                <div class="down-select-row">
+                    <input type="checkbox" id="send-in-email">
+                    <label for="send-in-email">Send in email</label>
+                </div>
+                <div class="down-select-row">
+                    <input type="checkbox" checked="checked" id="undo">
+                    <label for="undo">Undo</label>
+                </div>
+                <div class="down-select-row">
+                    <input type="checkbox" checked="checked" id="redo">
+                    <label for="redo">Redo</label>
+                </div>
+                <div class="down-select-row">
+                    <input type="checkbox" id="show-below-ribon">
+                    <label for="show-below-ribon">Show below ribon</label>
+                </div>
+                <div class="down-select-row">
+                    <input type="checkbox" id="minimize-the-ribon">
+                    <label for="minimize-the-ribon">Minimize the ribon</label>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="tool-name">
+        <div class="tool-name-left">
+            <div id="tabNameFile" class="tool-name-left-item">File</div>
+            <div class="tabFile-boxup">
+                <h5>
+                    Minimize the Ribbon (Crtl + F11)
+                </h5>
+                <span>
+                    Show only the tab names on the Ribbon
+                </span>
+            </div>
+            <div id="tabNameHome" class="tool-name-left-item active-tool active-tab">Home</div>
+            <div id="tabNameView" class="tool-name-left-item">View</div>
+
+        </div>
+        <div class="tool-name-right">
+            <div class="tool-name-right-item">
+                <iconify-icon id="icon-show-status" icon="mingcute:up-line" style="color: #a4a4a4;" width="20"
+                    height="20"></iconify-icon>
+                <iconify-icon id="icon-hide-status" icon="mingcute:down-line" style="color: #a4a4a4;" width="20"
+                    height="20"></iconify-icon>
+                <div class="tool-name-right-box">
+                    <h5>
+                        Minimize the Ribbon (Crtl + F11)
+                    </h5>
+                    <span>
+                        Show only the tab names on the Ribbon
+                    </span>
+                </div>
+            </div>
+            <div class="tool-name-right-item">
+                <iconify-icon icon="ph:question-fill" style="color: #0370cb;" width="23" height="23"></iconify-icon>
+                <div class="tool-name-right-box right-question">
+                    <h5>
+                        Paint help (F11)
+                    </h5>
+                    <span>
+                        Get help on using Paint
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="file-menu">
+            <div class="file-menu-header">
+                <span>File</span>
+            </div>
+            <div class="file-menu-contain">
+                <div class="file-menu-left">
+                    <div class="file-menu-left-item">
+
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/pageNew.png" alt="">
+                        </div>
+                        <span class="file-menu-name">New</span>
+
+                        <div class="file-boxup">
+                            <h5>
+                                Minimize the Ribbon (Crtl + F11)
+                            </h5>
+                            <span>
+                                Show only the tab names on the Ribbon
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="file-menu-left-item">
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/open.png" alt="">
+                        </div>
+                        <span class="file-menu-name">Open</span>
+                        <div class="file-boxup">
+                            <h5>
+                                Minimize the Ribbon (Crtl + F11)
+                            </h5>
+                            <span>
+                                Show only the tab names on the Ribbon
+                            </span>
+                        </div>
+                    </div>
+                    <div class="file-menu-left-item border-bottom">
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/save.png" alt="">
+                        </div>
+                        <span class="file-menu-name">Save</span>
+                        <div class="file-boxup">
+                            <h5>
+                                Minimize the Ribbon (Crtl + F11)
+                            </h5>
+                            <span>
+                                Show only the tab names on the Ribbon
+                            </span>
+                        </div>
+                    </div>
+                    <div id="menuSaveAs" class="file-menu-left-item sub-right-menu">
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/saveAs.png" alt="">
+                        </div>
+                        <span class="file-menu-name">Save As</span>
+                        <div class="file-boxup">
+                            <h5>
+                                Minimize the Ribbon (Crtl + F11)
+                            </h5>
+                            <span>
+                                Show only the tab names on the Ribbon
+                            </span>
+                        </div>
+                        <iconify-icon icon="icon-park-solid:down-one" style="color: #5e728c;" width="15" height="15"
+                            rotate="270deg"></iconify-icon>
+                        <div id="saveAs" class="menu-right-contain">
+                            <div class="menu-right-header">
+                                Save as
+                            </div>
+                            <main>
+                                <div class="menu-right-row">
+                                    <div>
+                                        <img src="./asset/PicturePNG.png" alt="">
+                                    </div>
+
+                                    <div>
+                                        <h5>PNG Pictures</h5>
+                                        <span>
+                                            Save a photo or drawing with high quanlity and use it on your computer or on
+                                            the
+                                            web.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="menu-right-row">
+                                    <div>
+                                        <img src="./asset/saveAsPicture2.png" alt="">
+                                    </div>
+
+                                    <div>
+                                        <h5>PNG Pictures</h5>
+                                        <span>
+                                            Save a photo or drawing with high quanlity and use it on your computer or on
+                                            the
+                                            web.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="menu-right-row">
+                                    <div>
+                                        <img src="./asset/saveAsPicture3.png" alt="">
+                                    </div>
+
+                                    <div>
+                                        <h5>PNG Pictures</h5>
+                                        <span>
+                                            Save a photo or drawing with high quanlity and use it on your computer or on
+                                            the
+                                            web.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="menu-right-row">
+                                    <div>
+                                        <img src="./asset/saveAsPicture4.png" alt="">
+                                    </div>
+
+                                    <div>
+                                        <h5>PNG Pictures</h5>
+                                        <span>
+                                            Save a photo or drawing with high quanlity and use it on your computer or on
+                                            the
+                                            web.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="menu-right-row">
+                                    <div>
+                                        <img src="./asset/saveAsPicture5.png" alt="">
+                                    </div>
+
+                                    <div>
+                                        <h5>PNG Pictures</h5>
+                                        <span>
+                                            Save a photo or drawing with high quanlity and use it on your computer or on
+                                            the
+                                            web.
+                                        </span>
+                                    </div>
+                                </div>
+                            </main>
+
+
+                        </div>
+                    </div>
+                    <div id="menuPrint" class="file-menu-left-item sub-right-menu">
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/print.png" alt="">
+                        </div>
+                        <span class="file-menu-name">Print</span>
+                        <div class="file-boxup">
+                            <h5>
+                                Minimize the Ribbon (Crtl + F11)
+                            </h5>
+                            <span>
+                                Show only the tab names on the Ribbon
+                            </span>
+                        </div>
+                        <iconify-icon icon="icon-park-solid:down-one" style="color: #5e728c;" width="15" height="15"
+                            rotate="270deg"></iconify-icon>
+                        <div id="printRight" class="menu-right-contain">
+                            <div class="menu-right-header">
+                                Print
+                            </div>
+                            <main>
+                                <div class="menu-right-row">
+                                    <div>
+                                        <img src="./asset/printPicture1.png" alt="">
+                                    </div>
+
+                                    <div>
+                                        <h5>PNG Pictures</h5>
+                                        <span>
+                                            Save a photo or drawing with high quanlity and use it on your computer or on
+                                            the
+                                            web.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="menu-right-row">
+                                    <div>
+                                        <img src="./asset/printPicture2.png" alt="">
+                                    </div>
+
+                                    <div>
+                                        <h5>PNG Pictures</h5>
+                                        <span>
+                                            Save a photo or drawing with high quanlity and use it on your computer or on
+                                            the
+                                            web.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="menu-right-row">
+                                    <div>
+                                        <img src="./asset/printPicture3.png" alt="">
+                                    </div>
+
+                                    <div>
+                                        <h5>PNG Pictures</h5>
+                                        <span>
+                                            Save a photo or drawing with high quanlity and use it on your computer or on
+                                            the
+                                            web.
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </main>
+
+                        </div>
+                    </div>
+                    <div class="file-menu-left-item">
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/scanner.png" alt="">
+                        </div>
+                        <span class="file-menu-name">From scanner or camera</span>
+
+                    </div>
+                    <div class="file-menu-left-item border-bottom">
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/email.png" alt="">
+                        </div>
+                        <span class="file-menu-name">Send in email</span>
+                        <div class="file-boxup">
+                            <h5>
+                                Minimize the Ribbon (Crtl + F11)
+                            </h5>
+                            <span>
+                                Show only the tab names on the Ribbon
+                            </span>
+                        </div>
+                    </div>
+                    <div id="menuDesktopbg" class="file-menu-left-item sub-right-menu border-bottom">
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/destopBg.png" alt="">
+                        </div>
+                        <span class="file-menu-name">Set as desktop background</span>
+                        <div class="file-boxup">
+                            <h5>
+                                Minimize the Ribbon (Crtl + F11)
+                            </h5>
+                            <span>
+                                Show only the tab names on the Ribbon
+                            </span>
+                        </div>
+                        <iconify-icon icon="icon-park-solid:down-one" style="color: #5e728c;" width="15" height="15"
+                            rotate="270deg"></iconify-icon>
+                        <div id="desktopBg" class="menu-right-contain">
+                            <div class="menu-right-header">
+                                Set as desktop background
+                            </div>
+                            <div class="menu-right-row">
+                                <div>
+                                    <img src="./asset/destopBg1.png" alt="">
+                                </div>
+
+                                <div>
+                                    <h5>PNG Pictures</h5>
+                                    <span>
+                                        Save a photo or drawing with high quanlity and use it on your computer or on
+                                        the
+                                        web.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="menu-right-row">
+                                <div>
+                                    <img src="./asset/destopBg2.png" alt="">
+                                </div>
+
+                                <div>
+                                    <h5>PNG Pictures</h5>
+                                    <span>
+                                        Save a photo or drawing with high quanlity and use it on your computer or on
+                                        the
+                                        web.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="menu-right-row">
+                                <div>
+                                    <img src="./asset/destopBg3.png" alt="">
+                                </div>
+
+                                <div>
+                                    <h5>PNG Pictures</h5>
+                                    <span>
+                                        Save a photo or drawing with high quanlity and use it on your computer or on
+                                        the
+                                        web.
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="file-menu-left-item border-bottom">
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/properties.png" alt="">
+                        </div>
+                        <span class="file-menu-name">Properties</span>
+                        <div class="file-boxup">
+                            <h5>
+                                Minimize the Ribbon (Crtl + F11)
+                            </h5>
+                            <span>
+                                Show only the tab names on the Ribbon
+                            </span>
+                        </div>
+                    </div>
+                    <div class="file-menu-left-item border-bottom">
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/aboutPaint.png" alt="">
+                        </div>
+                        <span>About Paint</span>
+                    </div>
+                    <div class="file-menu-left-item border-bottom">
+                        <div class="file-menu-left-item-icon">
+                            <img src="./asset/exits.png" alt="">
+                        </div>
+                        <span>Exist</span>
+                    </div>
+
+                </div>
+                <div class="file-menu-right">
+                    <div id="recent-pictures" class="menu-right-contain">
+                        <div class="menu-right-header">
+                            Recent pictures
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tools">
+        <div class="toolHome-cantainer">
+
+            <div class="toolHome-item-main">
+                <div class="toolHome-item">
+                    <div id="paste-toolhome" class="toolHome-item-left">
+                        <img src="./asset/paste.png" alt="">
+
+                        <span>Paste</span>
+                        <iconify-icon icon="icon-park-solid:down-one"></iconify-icon>
+
+
+                        <div class="paste-toolhome-menu">
+                            <div class="paste-toolhome-group">
+                                <div>
+
+                                    <img src="./asset/paste-mini.png" alt="">
+                                </div>
+                                <span>Paste</span>
+                            </div>
+                            <div class="paste-toolhome-group">
+                                <div>
+
+                                    <img src="./asset/paste-from.png" alt="">
+                                </div>
+                                <span>Paste from</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="toolHome-item-right">
+                        <div>
+                            <img src="./asset/cut.png" alt="">
+                            <span>Cut</span>
+                        </div>
+                        <div>
+                            <img src="./asset/copy.png" alt="">
+                            <span>Copy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="toolHome-item-name">
+                    Clipboard
+                </div>
+            </div>
+            <div class="toolHome-item-main">
+                <div class="toolHome-item">
+                    <div id="selectTab" class="toolHome-item-left">
+                        <img src="./asset/select.png" alt="">
+                        <span>Select</span>
+                        <iconify-icon icon="icon-park-solid:down-one"></iconify-icon>
+                        <div class="select-menu">
+                            <div class="select-menu-title">
+                                Selection shapes
+                            </div>
+                            <div class="select-menu-group">
+                                <div>
+                                    <img src="./asset/rectangulaSelecttion.png" alt="">
+                                </div>
+                                <span><u>R</u>ectanggular selection</span>
+                            </div>
+                            <div class="select-menu-group">
+                                <div>
+                                    <img src="./asset/freeDoom.png" alt="">
+                                </div>
+                                <span><u>F</u>ree-form selection</span>
+                            </div>
+                            <div class="select-menu-title">
+                                Selection options
+                            </div>
+                            <div class="select-menu-group">
+                                <div>
+                                    <img src="./asset/selectAll.png" alt="">
+                                </div>
+                                <span>Select <u>a</u>ll</span>
+                            </div>
+                            <div class="select-menu-group">
+                                <div>
+                                    <img src="./asset/invertSelect.png" alt="">
+                                </div>
+                                <span>Invert selection</span>
+                            </div>
+                            <div class="select-menu-group">
+                                <div>
+                                    <img src="./asset/delete.png" alt="">
+                                </div>
+                                <span><u>D</u>elete</span>
+                            </div>
+                            <div class="select-menu-group">
+                                <div>
+
+                                </div>
+                                <span><u>T</u>ransperant Selection</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="toolHome-item-right">
+                        <div>
+                            <img src="./asset/crop.png" alt="">
+                            <span>Crop</span>
+                        </div>
+                        <div>
+                            <img src="./asset/resize.png" alt="">
+                            <span>Resize</span>
+                        </div>
+                        <div class="rotate-tab">
+                            <img src="./asset/rotate.png" alt="">
+                            <span>Rotate</span>
+                            <iconify-icon icon="icon-park-solid:down-one"></iconify-icon>
+                            <div class="rotateMune">
+                                <div class="rotateMune-group">
+                                    <div>
+                                        <img src="./asset/rotate1.png" alt="">
+                                    </div>
+                                    <span>Rotate right 90<sup>0</sup></span>
+                                </div>
+                                <div class="rotateMune-group">
+                                    <div>
+                                        <img src="./asset/rotate2.png" alt="">
+                                    </div>
+                                    <span>Rotate left 90<sup>0</sup></span>
+                                </div>
+                                <div class="rotateMune-group">
+                                    <div>
+                                        <img src="./asset/rotate3.png" alt="">
+                                    </div>
+                                    <span>Rotate 180<sup>0</sup></span>
+                                </div>
+                                <div class="rotateMune-group">
+                                    <div>
+                                        <img src="./asset/rotate4.png" alt="">
+                                    </div>
+                                    <span>Flip vertical</span>
+                                </div>
+                                <div class="rotateMune-group">
+                                    <div>
+                                        <img src="./asset/rotate6.png" alt="">
+                                    </div>
+                                    <span>Flip Horizontal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="toolHome-item-name">
+                    Image
+                </div>
+            </div>
+            <div class="toolHome-item-main">
+                <div class="toolHome-tools">
+                    <div class="tool-options tool-active" id="pencile">
+                        <img src="./asset/pencile.png" alt="">
+                    </div>
+                    <div class="tool-options" id="fillcolor">
+                        <img src="./asset/fillcolor.png" alt="">
+                    </div>
+                    <div class="tool-options" id="text">
+                        <img src="./asset/text.png" alt="">
+                    </div>
+                    <div class="tool-options" id="eraser">
+                        <img src="./asset/eraser.png" alt="">
+                    </div>
+                    <div>
+                        <img src="./asset/colorPicker.png" alt="">
+                    </div>
+                    <div id="selected-zoom">
+                        <img src="./asset/zoom.png" alt="">
+                    </div>
+                </div>
+                <div class="toolHome-item-name">
+                    Tools
+                </div>
+            </div>
+            <div class="toolHome-item-main">
+                <div class="toolHome-item">
+                    <div class="toolHome-brushes">
+                        <img class="brush-select" src="./asset/brushes.png" alt="">
+                        <span>Prushes</span>
+                        <iconify-icon icon="icon-park-solid:down-one"></iconify-icon>
+                        <div class="brushes-menu">
+                            <div class="brushes-menu-container">
+                                <div>
+                                    <img class="brush-img" src="./asset/brush1.png" alt="">
+                                </div>
+                                <div>
+                                    <img class="brush-img" src="./asset/brush1-05.png" alt="">
+                                </div>
+                                <div>
+                                    <img class="brush-img" src="./asset/brush3.png" alt="">
+                                </div>
+                                <div>
+                                    <img class="brush-img" src="./asset/brush4.png" alt="">
+                                </div>
+                                <div>
+                                    <img class="brush-img" src="./asset/brush5.png" alt="">
+                                </div>
+                                <div>
+                                    <img class="brush-img" src="./asset/brush6.png" alt="">
+                                </div>
+                                <div>
+                                    <img class="brush-img" src="./asset/brush7.png" alt="">
+                                </div>
+                                <div>
+                                    <img class="brush-img" src="./asset/brush8.png" alt="">
+                                </div>
+                                <div>
+                                    <img class="brush-img" src="./asset/brush9.png" alt="">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="toolHome-item-main">
+                <div class="toolHome-item">
+                    <div class="shapes-container">
+                        <img class="tool-options" id="line" src="./asset/line.png" alt="">
+                        <img class="tool-options" id="curve" src="./asset/curve.png" alt="">
+                        <img class="tool-options" id="oval" src="./asset/oval.png" alt="">
+                        <img class="tool-options" id="rectangle" src="./asset/rectangle.png" alt="">
+                        <img class="tool-options" id="rounded-rectangle" src="./asset/rounded-rectangle.png" alt="">
+                        <img class="tool-options" id="triangle" src="./asset/triangle.png" alt="">
+                        <img class="tool-options" id="right-triangle" src="./asset/right-triangle.png" alt="">
+                        <img class="tool-options" id="diamond" src="./asset/diamond.png" alt="">
+                        <img class="tool-options" id="pentagon" src="./asset/pentagon.png" alt="">
+                        <img class="tool-options" id="hexagon-" src="./asset/hexagon-.png" alt="">
+                        <img class="tool-options" id="right-arrow" src="./asset/right-arrow.png" alt="">
+                        <img class="tool-options" id="left-arrow" src="./asset/left-arrow.png" alt="">
+                        <img class="tool-options" id="up-arrow" src="./asset/up-arrow.png" alt="">
+                        <img class="tool-options" id="down-arrow" src="./asset/down-arrow.png" alt="">
+                        <img class="tool-options" id="four-point-star" src="./asset/four-point-star.png" alt="">
+                        <img class="tool-options" id="start" src="./asset/start.png" alt="">
+                        <img class="tool-options" id="six-point-star" src="./asset/six-point-star.png" alt="">
+                        <img class="tool-options" id="rounded-rectangle" src="./asset/rounded-rectangle.png" alt="">
+                        <img class="tool-options" id="oval-callout" src="./asset/oval-callout.png" alt="">
+                        <img class="tool-options" id="cloud-callout" src="./asset/cloud-callout.png" alt="">
+                        <img class="tool-options" id="heart" src="./asset/heart.png" alt="">
+                        <img class="tool-options" id="lightning" src="./asset/lightning.png" alt="">
+                    </div>
+                    <div class="toolHome-item-right">
+                        <div>
+                            <img src="./asset/out-line.png" alt="">
+                            <span>Outline</span>
+                            <iconify-icon icon="icon-park-solid:down-one"></iconify-icon>
+                        </div>
+                        <div id="fillColorSelect">
+                            <img src="./asset/fillcolor.png" alt="">
+                            <span>Fill</span>
+                            <iconify-icon icon="icon-park-solid:down-one"></iconify-icon>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="toolHome-item-name">
+                    Shapes
+                </div>
+
+
+            </div>
+            <div class="toolHome-item-main">
+                <div class="toolHome-size">
+                    <img src="./asset/sizes.png" alt="">
+                    <span>Size</span>
+                    <iconify-icon icon="icon-park-solid:down-one"></iconify-icon>
+                    <div class="size-menu">
+                        <div class="size-menu-item">
+                            <img src="./asset/size1.png" alt="">
+                        </div>
+                        <div class="size-menu-item">
+                            <img src="./asset/size2.png" alt="">
+                        </div>
+                        <div class="size-menu-item">
+                            <img src="./asset/size3.png" alt="">
+                        </div>
+                        <div class="size-menu-item">
+                            <img src="./asset/size4.png" alt="">
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="toolHome-item-main">
+                <div class="toolHome-colors">
+                    <div class="toolHome-color1 active-color">
+                        <div class="square-color"><span class="color1"></span></div>
+                        <span>Color <br> 1</span>
+                    </div>
+                    <div class="toolHome-color2">
+                        <div class="square-color"><span class="color2"></span></div>
+                        <div></div>
+                        <span>Color <br> 2</span>
+                    </div>
+                    <div class="list-color">
+
+                    </div>
+                    <div class="edit-color">
+                        <img src="./asset/edit-color.png" alt="">
+                        <div>Edit <br> colors</div>
+                        <div class="select-color">
+                            <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toolHome-item-name">
+                    Colors
+                </div>
+            </div>
+            <div class="toolHome-item-main">
+                <div class="paint-3D">
+                    <img src="./asset/paint3D.png" alt="">
+                    <div>Paint with <br> 3D</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="toolView">
+            <div class="toolView-continer">
+                <div class="toolView-item">
+                    <div class="zoom-cantainer">
+                        <div class="zoom-group">
+                            <img src="./asset/zoom-in.png" alt="">
+                            <span>Zoom <br>in</span>
+                        </div>
+                        <div class="zoom-group">
+                            <img src="./asset/zoom-out.png" alt="">
+                            <span>Zoom <br>out</span>
+                        </div>
+                        <div class="zoom-group">
+                            <img src="./asset/full.png" alt="">
+                            <span>100 <br>%</span>
+                        </div>
+                    </div>
+                    <div class="toolView-name">
+                        Zoom
+                    </div>
+                </div>
+                <div class="toolView-item">
+                    <div class="showHide">
+                        <div class="showHide-group">
+                            <input id="rulers" type="checkbox">
+                            <label for="rulers">Rulers</label>
+                        </div>
+                        <div>
+                            <input id="gridlines" type="checkbox">
+                            <label for="gridlines">Gridlines</label>
+                        </div>
+                        <div>
+                            <input id="status" checked="true" type="checkbox">
+                            <label for="status">Status bar</label>
+                        </div>
+                    </div>
+                    <div class="toolView-name">
+                        Show or hide
+                    </div>
+                </div>
+                <div class="toolView-item">
+                    <div class="display">
+                        <div>
+                            <img src="./asset/fullsceen.png" alt="">
+                            <span>Full <br> Screen</span>
+                        </div>
+                        <div>
+                            <img src="./asset/thumnail.png" alt="">
+                            <span>Thumbnail</span>
+                        </div>
+                    </div>
+                    <div class="toolView-name">
+                        Display
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="board">
+        <div class="canvas-cantainer">
+            <div class="move-height"></div>
+            <div class="move-width"></div>
+            <div class="move-size"></div>
+            <canvas id="canvas" width="500" height="300"></canvas>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-item">
+                <img src="./asset/locationIcon.png" alt="">
+                <div class="locationMouse"></div>
+            </div>
+            <div class="footer-item">
+                <img src="./asset/next-location.png" alt="">
+            </div>
+
+            <div class="footer-item">
+                <img src="./asset/sizeCanvas.png" alt="">
+                <span class="canvasSize">500 X 300 px</span>
+            </div>
+
+            <div class="footer-item"></div>
+            <div class="footer-item"></div>
+            <div class="footer-item">
+                <div class="percentSize">
+                    50%
+                </div>
+                <div class="progress-container">
+                    <img src="./asset/iconZoomout.png" alt="">
+                    <div class="progress-bar" onclick="updateProgress(event)">
+                        <div class="progress"></div>
+                    </div>
+                    <img src="./asset/iconZoomIn.png" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- <div class="progress-bar" onclick="updateProgress(event)">
+            <div class="progress"></div>
+        </div> -->
+
+    </div>
+
+</body>
+<script src="./script.js"></script>
+
+</html>
